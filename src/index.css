@@ -1,1 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 @import 'tailwindcss';
+
+@theme {
+    --color-primary: #635FC7;
+    --color-primary-hover: #A8A4FF;
+    --color-black: #000112;
+    --color-white: #FFFFFF;
+    --color-darkgrey: #2B2C37;
+    --color-mediumgrey: #828FA3;
+    --color-lines-dark: #3E3F4E;
+    --color-lines-light: #E4EBFA;
+    --color-bg-dark: #20212C;
+    --color-bg-light: #F4F7FD;
+    --color-destructive: #EA5555;
+    --color-destructive-hover: #FF9898;
+
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+}
+
+@layer components {
+    .heading-xl {
+        @apply text-2xl font-bold leading-7.5 text-black;
+    }
+    .heading-lg {
+        @apply text-lg font-bold leading-5.75 text-black;
+    }
+    .heading-md {
+        @apply text-[15px] font-bold leading-4.75 text-black;
+    }
+    .heading-sm {
+        @apply text-xs font-bold leading-3.75 tracking-[2.4px] text-mediumgrey;
+    }
+    .body-lg {
+        @apply text-[13px] font-medium leading-5.75 text-darkgrey;
+    }
+    .body-md {
+        @apply text-xs font-bold leading-3.75 text-darkgrey;
+    }
+}
