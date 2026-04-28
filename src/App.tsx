@@ -1,4 +1,30 @@
+import { Input } from '@/components/ui/Input';
+import { type SubmitHandler, useForm } from 'react-hook-form';
+
+import { Button, Checkbox, Select } from './components/ui';
+
+interface IFormInput {
+    textinput: string;
+    selectinput: string;
+}
+const options = [
+    { value: 'option1', label: 'Option 1' },
+    { value: 'option2', label: 'Option 2' },
+    { value: 'option3', label: 'Option 3' },
+];
 function App() {
+    const { control, handleSubmit } = useForm({
+        defaultValues: {
+            textinput: '',
+            selectinput: options[0].value,
+        },
+        mode: 'onSubmit',
+    });
+
+    const onSubmit: SubmitHandler<IFormInput> = (data) => {
+        console.log(data);
+    };
+
     return (
         <div className="p-4 container mx-auto space-y-4">
             <h1 className="heading-xl text-primary">Colors</h1>
@@ -82,7 +108,46 @@ function App() {
                 </div>
             </div>
             <h1 className="heading-xl text-primary">Interactives</h1>
-            <div className="flex flex-row gap-4"></div>
+            <div className="flex flex-row gap-4">
+                <div className="flex flex-col gap-2">
+                    <Button>Primary</Button>
+                    <Button variant="secondary">Secondary</Button>
+                    <Button variant="destructive">Destructive</Button>
+                </div>
+                <div className="flex flex-col gap-2">
+                    <Button size="sm">Primary</Button>
+                    <Button variant="secondary" size="sm">
+                        Secondary
+                    </Button>
+                    <Button variant="destructive" size="sm">
+                        Destructive
+                    </Button>
+                </div>
+            </div>
+            <div className="flex flex-row gap-4">
+                <div className="container mx-auto max-w-md">
+                    <Checkbox id="checkbox1" label="Checkbox 1" />
+                    <form
+                        className="space-y-4"
+                        onSubmit={handleSubmit(onSubmit)}
+                    >
+                        <Input
+                            label="Input"
+                            name="textinput"
+                            control={control}
+                            placeholder="Type something..."
+                            rules={{ required: "Can't be empty" }}
+                        />
+                        <Select
+                            label="Select"
+                            name="selectinput"
+                            control={control}
+                            options={options}                            
+                        />
+                        <Button type="submit">Submit</Button>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 }
