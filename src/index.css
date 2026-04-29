@@ -5,45 +5,68 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-primary: #635FC7;
-    --color-primary-hover: #A8A4FF;
+    --color-primary: #635fc7;
+    --color-primary-hover: #a8a4ff;
     --color-black: #000112;
-    --color-white: #FFFFFF;
-    --color-darkgrey: #2B2C37;
-    --color-mediumgrey: #828FA3;
-    --color-lines-dark: #3E3F4E;
-    --color-lines-light: #E4EBFA;
-    --color-bg-dark: #20212C;
-    --color-bg-light: #F4F7FD;
-    --color-destructive: #EA5555;
-    --color-destructive-hover: #FF9898;
+    --color-white: #ffffff;
+    --color-darkgrey: #2b2c37;
+    --color-mediumgrey: #828fa3;
+    --color-lines-dark: #3e3f4e;
+    --color-lines-light: #e4ebfa;
+    --color-bg-dark: #20212c;
+    --color-bg-light: #f4f7fd;
+    --color-destructive: #ea5555;
+    --color-destructive-hover: #ff9898;
 
     --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+    --animate-fade-in: fade-in 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    --animate-content-show: content-show 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes content-show {
+        from {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
 }
 
 @layer base {
     body {
-        @apply bg-bg-light text-black dark:bg-bg-dark dark:text-white;
+        @apply bg-bg-light dark:bg-bg-dark text-black dark:text-white;
     }
 }
 
 @layer components {
     .heading-xl {
-        @apply text-2xl font-bold leading-7.5 text-black dark:text-white;
+        @apply text-2xl leading-7.5 font-bold text-black dark:text-white;
     }
     .heading-lg {
-        @apply text-lg font-bold leading-5.75 text-black dark:text-white;
+        @apply text-lg leading-5.75 font-bold text-black dark:text-white;
     }
     .heading-md {
-        @apply text-[15px] font-bold leading-4.75 text-black dark:text-white;
+        @apply text-[15px] leading-4.75 font-bold text-black dark:text-white;
     }
     .heading-sm {
-        @apply text-xs font-bold leading-3.75 tracking-[2.4px] text-mediumgrey dark:text-white;
+        @apply text-mediumgrey text-xs leading-3.75 font-bold tracking-[2.4px] dark:text-white;
     }
     .body-lg {
-        @apply text-[13px] font-medium leading-5.75 text-darkgrey dark:text-white;
+        @apply text-darkgrey text-[13px] leading-5.75 font-medium dark:text-white;
     }
     .body-md {
-        @apply text-xs font-bold leading-3.75 text-darkgrey dark:text-mediumgrey;
+        @apply text-darkgrey dark:text-mediumgrey text-xs leading-3.75 font-bold;
     }
 }

@@ -1,10 +1,8 @@
+import { cn } from '@/lib/utils';
 import { Slot as RadixSlot } from 'radix-ui';
 import { forwardRef } from 'react';
 
-type ButtonVariant =
-    | 'primary'
-    | 'secondary'
-    | 'destructive';
+type ButtonVariant = 'primary' | 'secondary' | 'destructive' | 'ghost';
 type ButtonSize = 'sm' | 'lg';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -14,12 +12,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-    primary:
-        'bg-primary text-white hover:bg-primary-hover',
+    primary: 'bg-primary text-white hover:bg-primary-hover',
     secondary:
         'bg-primary/10 dark:bg-white/90 text-primary hover:bg-primary/25 dark:hover:bg-white',
-    destructive:
-        'bg-destructive text-white hover:bg-destructive-hover',
+    destructive: 'bg-destructive text-white hover:bg-destructive-hover',
+    ghost: 'bg-transparent text-primary',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -42,15 +39,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         return (
             <Comp
                 ref={ref}
-                className={[
+                className={cn(
                     'inline-flex items-center justify-center gap-2 rounded-3xl border-0 cursor-pointer',
                     'transition-colors duration-500 ease-in-out',
-                    'px-2 w-full',
+                    'px-4',
                     'disabled:opacity-50 disabled:pointer-events-none',
                     variantClasses[variant],
                     sizeClasses[size],
                     className,
-                ].join(' ')}
+                )}
                 {...props}
             />
         );
