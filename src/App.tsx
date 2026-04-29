@@ -1,5 +1,7 @@
 import { Input } from '@/components/ui/Input';
+import themeStore from '@/lib/store/theme';
 import { type SubmitHandler, useForm } from 'react-hook-form';
+import { useStore } from 'zustand';
 
 import { Button, Checkbox, Select } from './components/ui';
 
@@ -13,6 +15,7 @@ const options = [
     { value: 'option3', label: 'Option 3' },
 ];
 function App() {
+    const { theme, toggleTheme } = useStore(themeStore, (state) => state);
     const { control, handleSubmit } = useForm({
         defaultValues: {
             textinput: '',
@@ -27,6 +30,7 @@ function App() {
 
     return (
         <div className="p-4 container mx-auto space-y-4">
+            <Button onClick={toggleTheme}>Toggle Theme: {theme}</Button>
             <h1 className="heading-xl text-primary">Colors</h1>
             <div>
                 <div className="flex flex-row gap-4 flex-wrap items-center justify-center">
@@ -142,7 +146,7 @@ function App() {
                             label="Select"
                             name="selectinput"
                             control={control}
-                            options={options}                            
+                            options={options}
                         />
                         <Button type="submit">Submit</Button>
                     </form>

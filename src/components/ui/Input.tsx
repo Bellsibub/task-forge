@@ -52,7 +52,7 @@ const Input = <
                     <div className="relative">
                         <input
                             data-invalid={!!errors[name]}
-                            className="w-full border border-mediumgrey/25 rounded-sm h-10 px-4 body-lg text-black focus:outline-none data-[invalid=true]:border-destructive"
+                            className="w-full border border-mediumgrey/25 rounded-sm h-10 px-4 body-lg text-black dark:text-white focus:outline-none data-[invalid=true]:border-destructive"
                             placeholder={placeholder}
                             {...field}
                         />

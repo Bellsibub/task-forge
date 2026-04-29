@@ -52,7 +52,7 @@ const Select = <
                     >
                         <RadixSelect.Trigger
                             className={cn(
-                                'w-full border border-mediumgrey/25 rounded-sm h-10 px-4 body-lg text-black focus:outline-none flex items-center justify-between cursor-pointer hover:border-primary ',
+                                'w-full border border-mediumgrey/25 rounded-sm h-10 px-4 body-lg text-black dark:text-white focus:outline-none flex items-center justify-between cursor-pointer hover:border-primary ',
                                 open && 'border-primary',
                             )}
                         >
@@ -68,10 +68,10 @@ const Select = <
                                 sideOffset={4}
                                 className="w-(--radix-select-trigger-width)"
                             >
-                                <RadixSelect.Viewport className="bg-white rounded-sm p-2">
+                                <RadixSelect.Viewport className="bg-white dark:bg-bg-dark rounded-sm p-2">
                                     {options.map((item) => (
                                         <RadixSelect.Item
-                                            className="p-2 rounded-sm cursor-pointer hover:bg-primary/25 transition-colors duration-300 ease-in-out focus:outline-none body-lg text-mediumgrey hover:text-primary"
+                                            className="p-2 rounded-sm cursor-pointer hover:bg-primary/25 transition-colors duration-300 ease-in-out focus:outline-none body-lg text-mediumgrey hover:text-primary dark:hover:text-white"
                                             key={item.value}
                                             value={item.value}
                                         >
