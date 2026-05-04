@@ -54,12 +54,11 @@ const Input = <
                             data-invalid={!!errors[name]}
                             className="w-full border border-mediumgrey/25 rounded-sm h-10 px-4 body-lg text-black dark:text-white focus:outline-none data-[invalid=true]:border-destructive"
                             placeholder={placeholder}
+                            autoComplete="off"
                             {...field}
                         />
                         {errors[name] && (
-                            <div
-                                className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-destructive body-lg"
-                            >
+                            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-destructive body-lg">
                                 {errors[name]?.message?.toString()}
                             </div>
                         )}

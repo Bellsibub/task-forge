@@ -9,3 +9,6 @@ export type { InputProps } from './Input';
 
 export { Select } from './Select';
 export type { SelectProps } from './Select';
+
+export { MultiCreate } from './MultiCreate';
+export type { MultiCreateProps } from './MultiCreate';

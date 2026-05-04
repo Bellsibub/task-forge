@@ -1,28 +1,12 @@
 import { Column } from '@/components/layout/Column';
-import { Button } from '@/components/ui';
+import { NoColumns } from '@/components/layout/Empties';
+import type { Board as BoardType } from '@/lib/types';
 
-type BoardProps = {} & React.HTMLAttributes<HTMLDivElement>;
+type BoardProps = { data: BoardType } & React.HTMLAttributes<HTMLDivElement>;
 
-export const Board = ({ ...props }: BoardProps) => {
-    const isEmpty = false; // Placeholder for actual logic to determine if the board is empty
-
-    if (isEmpty) {
-        return (
-            <main
-                className="flex items-center justify-center h-[calc(100vh-88px)] px-4"
-                {...props}
-            >
-                <div
-                    className="flex flex-col gap-6.25 items-center text-center"
-                    {...props}
-                >
-                    <h2 className="heading-lg text-mediumgrey">
-                        This board is empty. Create a new column to get started.
-                    </h2>
-                    <Button>+ Add New Column</Button>
-                </div>
-            </main>
-        );
+export const Board = ({ data, ...props }: BoardProps) => {
+    if (data.columns?.length === 0) {
+        return <NoColumns />;
     }
     return (
         <main
@@ -30,9 +14,9 @@ export const Board = ({ ...props }: BoardProps) => {
             {...props}
         >
             <div className="grid grid-flow-col auto-cols-[280px]" {...props}>
-                <Column />
-                <Column />
-                <Column />
+                {data.columns?.map((column) => (
+                    <Column key={column.id} data={column} />
+                ))}
             </div>
         </main>
     );

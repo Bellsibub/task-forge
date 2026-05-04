@@ -1,19 +1,21 @@
 import IconChevronDown from '@/assets/icon-chevron-down.svg?react';
 import IconChevronUp from '@/assets/icon-chevron-up.svg?react';
 import { Button } from '@/components/ui';
+import { appStore } from '@/lib/store/app';
 import { Dialog } from 'radix-ui';
 import { useState } from 'react';
 
 type SidebarProps = {} & React.HTMLAttributes<HTMLDivElement>;
 
 export const Sidebar = ({ ...props }: SidebarProps) => {
+    const boards = appStore((state) => state.boards);
     const [open, setOpen] = useState(false);
     return (
         <Dialog.Root open={open} onOpenChange={setOpen} {...props}>
             <Dialog.Trigger asChild>
-                <Button variant="ghost" className="min-w-0 max-w-full">
+                <Button variant="ghost" className="min-w-0 max-w-full" disabled={boards.length === 0}>
                     <span className="heading-lg truncate">
-                        Current board name
+                        {boards.length === 0 ? 'No boards' : boards[0].name}
                     </span>
                     {open ? (
                         <IconChevronUp className="shrink-0" />
