@@ -9,15 +9,15 @@ type NavbarProps = {} & React.HTMLAttributes<HTMLDivElement>;
 export const Navbar = ({ ...props }: NavbarProps) => {
     return (
         <nav
-            className="bg-white h-16 flex items-center justify-between"
+            className="bg-white h-16 flex items-center justify-between w-full sticky top-0 z-10"
             {...props}
         >
-            <div className="flex items-center pl-4">
+            <div className="flex items-center pl-4 min-w-0 overflow-hidden">
                 <Logo className="shrink-0" />
-                <Sidebar className="block" />
+                <Sidebar />
             </div>
             <div className="flex items-center gap-2">
-                <Button className='w-12 h-8 p-0'>
+                <Button className='w-12 h-8 p-0' disabled>
                     <IconAdd />
                 </Button>
                 <BoardOptions />
