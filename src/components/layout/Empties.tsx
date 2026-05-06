@@ -1,16 +1,27 @@
 import { CreateBoard } from '@/components/dialogs/CreateBoard';
 import { Button } from '@/components/ui';
+import { useState } from 'react';
 
 export const NoBoards = () => {
+    const [open, setOpen] = useState(false);
+
     return (
-        <main className="flex items-center justify-center h-[calc(100vh-88px)] px-4">
-            <div className="flex flex-col gap-6.25 items-center text-center">
-                <h2 className="heading-lg text-mediumgrey">
-                    There are no boards. Create a new board to get started.
-                </h2>
-                <CreateBoard />
-            </div>
-        </main>
+        <>
+            <main className="flex items-center justify-center h-[calc(100vh-88px)] px-4">
+                <div className="flex flex-col gap-6.25 items-center text-center">
+                    <h2 className="heading-lg text-mediumgrey">
+                        There are no boards. Create a new board to get started.
+                    </h2>
+                    <Button
+                        className="min-w-0 max-w-full"
+                        onClick={() => setOpen(true)}
+                    >
+                        + Add New Board
+                    </Button>
+                </div>
+            </main>
+            <CreateBoard open={open} setOpen={setOpen} />
+        </>
     );
 };
 

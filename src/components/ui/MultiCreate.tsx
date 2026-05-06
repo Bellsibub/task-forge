@@ -36,7 +36,7 @@ const MultiCreate = <
     colorKey,
     addLabel,
 }: MultiCreateProps<TFieldValues, TName>) => {
-    const { fields, append, update } = useFieldArray({ control, name });
+    const { fields, append } = useFieldArray({ control, name });
 
     const handleNewColumn = () => {
         append({
@@ -57,18 +57,17 @@ const MultiCreate = <
             {fields.map((field, index) => (
                 <div key={field.id} className="relative inline-flex">
                     {colorKey && (
-                        <ColorPopover
-                            value={
-                                (field as Record<string, unknown>)[colorKey] as
-                                    | string
-                                    | undefined
+                        <Controller
+                            name={
+                                `${name}.${index}.${colorKey}` as Path<TFieldValues>
                             }
-                            onChange={(color) => {
-                                update(index, {
-                                    ...(field as Record<string, unknown>),
-                                    [colorKey]: color,
-                                } as Parameters<typeof update>[1]);
-                            }}
+                            control={control}
+                            render={({ field: colorField }) => (
+                                <ColorPopover
+                                    value={colorField.value}
+                                    onChange={colorField.onChange}
+                                />
+                            )}
                         />
                     )}
                     <Controller

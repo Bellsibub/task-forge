@@ -1,4 +1,4 @@
-import type { Board, Column } from '@/lib/types';
+import type { Board } from '@/lib/types';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
@@ -13,11 +13,7 @@ export interface AppState {
     // Board CRUD operations
     createBoard: (board: Board) => void;
     readBoard: (boardId: string) => Board | undefined;
-    updateBoard: (
-        boardId: string,
-        boardName: string,
-        columns: Column[],
-    ) => void;
+    updateBoard: (board: Board) => void;
     deleteBoard: (boardId: string) => void;
 }
 
@@ -43,15 +39,14 @@ export const appStore = create<AppState>()(
                 }),
             readBoard: (boardId) =>
                 get().boards.find((board) => board.id === boardId),
-            updateBoard: (boardId, boardName, columns) =>
+            updateBoard: (board) =>
                 set((state) => {
                     const boardIndex = state.boards.findIndex(
-                        (board) => board.id === boardId,
+                        (b) => b.id === board.id,
                     );
                     if (boardIndex === -1) throw new Error('Board not found');
-                    state.boards[boardIndex].name = boardName;
-                    state.boards[boardIndex].columns = columns;
-                }),
+                    state.boards[boardIndex] = board;
+            }),
             deleteBoard: (boardId) =>
                 set((state) => {
                     const boardIndex = state.boards.findIndex(
@@ -59,6 +54,7 @@ export const appStore = create<AppState>()(
                     );
                     if (boardIndex === -1) throw new Error('Board not found');
                     state.boards.splice(boardIndex, 1);
+                    state.activeBoardId = state.boards.length > 0 ? state.boards[0].id : null;
                 }),
         })),
     ),
