@@ -1,16 +1,14 @@
 import { Button, Input, MultiCreate } from '@/components/ui';
 import { appStore } from '@/lib/store/app';
+import { uiStore } from '@/lib/store/ui';
 import type { Board } from '@/lib/types';
 import { Dialog } from 'radix-ui';
-import { type ComponentProps, useEffect } from 'react';
+import { useEffect } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 
-type EditBoardProps = {
-    setOpen: (open: boolean) => void;
-} & ComponentProps<typeof Dialog.Root>;
-
-export const EditBoard = ({ open, setOpen, ...props }: EditBoardProps) => {
+export const EditBoard = () => {
     const { updateBoard, getActiveBoard } = appStore((state) => state);
+    const { openEditBoard, setOpenEditBoard } = uiStore((state) => state);
 
     const { control, handleSubmit, reset } = useForm<Board>({
         defaultValues: {
@@ -22,27 +20,27 @@ export const EditBoard = ({ open, setOpen, ...props }: EditBoardProps) => {
     });
 
     useEffect(() => {
-        if (open) {
+        if (openEditBoard) {
             const board = getActiveBoard();
             reset(board);
         }
-    }, [open, getActiveBoard, reset]);
+    }, [openEditBoard, getActiveBoard, reset]);
 
     const onSubmit: SubmitHandler<Board> = (data) => {
         updateBoard(data);
         reset();
-        setOpen(false);
+        setOpenEditBoard(false);
     };
 
     const handleOpenChange = (open: boolean) => {
-        setOpen(open);
+        setOpenEditBoard(open);
         if (!open) {
             reset();
         }
     };
 
     return (
-        <Dialog.Root open={open} onOpenChange={handleOpenChange} {...props}>
+        <Dialog.Root open={openEditBoard} onOpenChange={handleOpenChange}>
             <Dialog.Portal>
                 <Dialog.Overlay className="bg-black/50 fixed inset-0 animate-fade-in top-16 z-20" />
                 <Dialog.Content className="bg-white rounded-lg fixed p-6 w-[calc(100%-2rem)] max-w-120 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 animate-content-show z-20 flex flex-col gap-6">

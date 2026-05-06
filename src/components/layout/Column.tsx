@@ -1,4 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
+import { Task } from '@/components/layout/Task';
 import type { Column as ColumnType } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { type VariantProps, cva } from 'class-variance-authority';
@@ -46,6 +47,16 @@ export const Column = ({ data, ...props }: ColumnProps) => {
     return (
         <div {...props}>
             <ColumnHeader variant={data.color} title={data.name} />
+            <div className="mt-4 flex flex-col gap-4">
+                <Task />
+                <Task />
+                <Task />
+                <Task />
+                <Task />
+                <Task />
+                <Task />
+                <Task />
+            </div>
         </div>
     );
 };

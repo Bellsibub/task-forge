@@ -84,7 +84,7 @@ const MultiCreate = <
                             />
                         )}
                     />
-                    <Button size="sm" variant="ghost" className="pr-0">
+                    <Button size="sm" variant="ghost" className="pr-0" type="button" onClick={() => fields.splice(index, 1)}>
                         <IconCross />
                     </Button>
                 </div>

@@ -3,7 +3,7 @@ import { Slot as RadixSlot } from 'radix-ui';
 import { forwardRef } from 'react';
 
 type ButtonVariant = 'primary' | 'secondary' | 'destructive' | 'ghost';
-type ButtonSize = 'sm' | 'lg';
+type ButtonSize = 'sm' | 'lg' | 'xl';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: ButtonVariant;
@@ -20,6 +20,7 @@ const variantClasses: Record<ButtonVariant, string> = {
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
+    xl: 'heading-xl',
     sm: 'text-[13px] font-bold leading-5.75 h-10',
     lg: 'heading-md h-12',
 };

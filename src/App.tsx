@@ -1,3 +1,6 @@
+import { CreateBoard } from '@/components/dialogs/CreateBoard';
+import { DeleteBoard } from '@/components/dialogs/DeleteBoard';
+import { EditBoard } from '@/components/dialogs/EditBoard';
 import { Board } from '@/components/layout/Board';
 import { NoBoards } from '@/components/layout/Empties';
 import { Navbar } from '@/components/layout/Navbar';
@@ -14,6 +17,9 @@ function App() {
             ) : (
                 <NoBoards />
             )}
+            <CreateBoard />
+            <EditBoard />
+            <DeleteBoard />
         </div>
     );
 }

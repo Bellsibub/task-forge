@@ -1,9 +1,8 @@
-import { CreateBoard } from '@/components/dialogs/CreateBoard';
 import { Button } from '@/components/ui';
-import { useState } from 'react';
+import { uiStore } from '@/lib/store/ui';
 
 export const NoBoards = () => {
-    const [open, setOpen] = useState(false);
+    const setOpenCreateBoard = uiStore((state) => state.setOpenCreateBoard);
 
     return (
         <>
@@ -14,13 +13,12 @@ export const NoBoards = () => {
                     </h2>
                     <Button
                         className="min-w-0 max-w-full"
-                        onClick={() => setOpen(true)}
+                        onClick={() => setOpenCreateBoard(true)}
                     >
                         + Add New Board
                     </Button>
                 </div>
             </main>
-            <CreateBoard open={open} setOpen={setOpen} />
         </>
     );
 };
@@ -28,15 +26,23 @@ export const NoBoards = () => {
 NoBoards.displayName = 'NoBoards';
 
 export const NoColumns = () => {
+    const setOpenCreateBoard = uiStore((state) => state.setOpenCreateBoard);
     return (
-        <main className="flex items-center justify-center h-[calc(100vh-88px)] px-4">
-            <div className="flex flex-col gap-6.25 items-center text-center">
-                <h2 className="heading-lg text-mediumgrey">
-                    This board is empty. Create a new column to get started.
-                </h2>
-                <Button>+ Add New Column</Button>
-            </div>
-        </main>
+        <>
+            <main className="flex items-center justify-center h-[calc(100vh-88px)] px-4">
+                <div className="flex flex-col gap-6.25 items-center text-center">
+                    <h2 className="heading-lg text-mediumgrey">
+                        This board is empty. Create a new column to get started.
+                    </h2>
+                    <Button
+                        className="min-w-0 max-w-full"
+                        onClick={() => setOpenCreateBoard(true)}
+                    >
+                        + Add New Column
+                    </Button>
+                </div>
+            </main>
+        </>
     );
 };
 

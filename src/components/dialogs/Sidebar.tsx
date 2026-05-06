@@ -1,25 +1,22 @@
 import IconBoard from '@/assets/icon-board.svg?react';
 import IconChevronDown from '@/assets/icon-chevron-down.svg?react';
 import IconChevronUp from '@/assets/icon-chevron-up.svg?react';
-import { CreateBoard } from '@/components/dialogs/CreateBoard';
 import { Button } from '@/components/ui';
 import { appStore } from '@/lib/store/app';
+import { uiStore } from '@/lib/store/ui';
 import { cn } from '@/lib/utils';
 import { Dialog } from 'radix-ui';
-import { useState } from 'react';
 
-type SidebarProps = {} & React.HTMLAttributes<HTMLDivElement>;
-
-export const Sidebar = ({ ...props }: SidebarProps) => {
-    const boards = appStore((state) => state.boards);
-    const activeBoardId = appStore((state) => state.activeBoardId);
-    const getActiveBoard = appStore((state) => state.getActiveBoard);
-    const setActiveBoard = appStore((state) => state.setActiveBoard);
-    const [open, setOpen] = useState(false);
-    const [createOpen, setCreateOpen] = useState(false);
+export const Sidebar = () => {
+    const { boards, getActiveBoard, activeBoardId, setActiveBoard } = appStore(
+        (state) => state,
+    );
+    const { sidebarOpen, setSidebarOpen, setOpenCreateBoard } = uiStore(
+        (state) => state,
+    );
     return (
         <>
-            <Dialog.Root open={open} onOpenChange={setOpen} {...props}>
+            <Dialog.Root open={sidebarOpen} onOpenChange={setSidebarOpen}>
                 <Dialog.Trigger asChild>
                     <Button
                         variant="ghost"
@@ -31,7 +28,7 @@ export const Sidebar = ({ ...props }: SidebarProps) => {
                                 ? 'No boards'
                                 : getActiveBoard()?.name}
                         </span>
-                        {open ? (
+                        {sidebarOpen ? (
                             <IconChevronUp className="shrink-0" />
                         ) : (
                             <IconChevronDown className="shrink-0" />
@@ -60,7 +57,7 @@ export const Sidebar = ({ ...props }: SidebarProps) => {
                                     )}
                                     onClick={() => {
                                         setActiveBoard(board.id);
-                                        setOpen(false);
+                                        setSidebarOpen(false);
                                     }}
                                 >
                                     <IconBoard className="shrink-0" />
@@ -68,7 +65,7 @@ export const Sidebar = ({ ...props }: SidebarProps) => {
                                 </Button>
                             ))}
                             <Button
-                                onClick={() => setCreateOpen(true)}
+                                onClick={() => setOpenCreateBoard(true)}
                                 variant="ghost"
                                 className="w-full justify-start rounded-l-none pl-6 text-primary gap-3 hover:bg-primary/25"
                             >
@@ -79,7 +76,6 @@ export const Sidebar = ({ ...props }: SidebarProps) => {
                     </Dialog.Content>
                 </Dialog.Portal>
             </Dialog.Root>
-            <CreateBoard open={createOpen} setOpen={setCreateOpen} />
         </>
     );
 };

@@ -1,17 +1,13 @@
 import { Button, Input, MultiCreate } from '@/components/ui';
 import { appStore } from '@/lib/store/app';
+import { uiStore } from '@/lib/store/ui';
 import type { Board } from '@/lib/types';
 import { Dialog } from 'radix-ui';
-import { type ComponentProps } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 
-type CreateBoardProps = {
-    setOpen: (open: boolean) => void;
-} & ComponentProps<typeof Dialog.Root>;
-
-export const CreateBoard = ({ setOpen, ...props }: CreateBoardProps) => {
-    // const [open, setOpen] = useState(false);
+export const CreateBoard = () => {
     const { createBoard } = appStore((state) => state);
+    const { openCreateBoard, setOpenCreateBoard } = uiStore((state) => state);
 
     const { control, handleSubmit, reset } = useForm<Board>({
         defaultValues: {
@@ -26,18 +22,18 @@ export const CreateBoard = ({ setOpen, ...props }: CreateBoardProps) => {
         console.log(data);
         createBoard(data);
         reset();
-        setOpen(false);
+        setOpenCreateBoard(false);
     };
 
     const handleOpenChange = (open: boolean) => {
-        setOpen(open);
+        setOpenCreateBoard(open);
         if (!open) {
             reset();
         }
     };
 
     return (
-        <Dialog.Root onOpenChange={handleOpenChange} {...props}>
+        <Dialog.Root open={openCreateBoard} onOpenChange={handleOpenChange}>
             <Dialog.Portal>
                 <Dialog.Overlay className="bg-black/50 fixed inset-0 animate-fade-in top-16 z-20" />
                 <Dialog.Content className="bg-white rounded-lg fixed p-6 w-[calc(100%-2rem)] max-w-120 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 animate-content-show z-20 flex flex-col gap-6">
