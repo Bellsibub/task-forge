@@ -26,7 +26,7 @@ export const NoBoards = () => {
 NoBoards.displayName = 'NoBoards';
 
 export const NoColumns = () => {
-    const setOpenCreateBoard = uiStore((state) => state.setOpenCreateBoard);
+    const setOpenEditBoard = uiStore((state) => state.setOpenEditBoard);
     return (
         <>
             <main className="flex items-center justify-center h-[calc(100vh-88px)] px-4">
@@ -36,7 +36,7 @@ export const NoColumns = () => {
                     </h2>
                     <Button
                         className="min-w-0 max-w-full"
-                        onClick={() => setOpenCreateBoard(true)}
+                        onClick={() => setOpenEditBoard(true)}
                     >
                         + Add New Column
                     </Button>

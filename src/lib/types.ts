@@ -8,7 +8,7 @@ export interface Task {
     id: string;
     title: string;
     description?: string | null;
-    status: string;
+    columnId: string;
     subtasks?: SubTask[] | null;
 }
 

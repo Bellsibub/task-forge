@@ -16,6 +16,7 @@ interface InputProps<
     name: TName;
     placeholder?: string;
     control: Control<TFieldValues>;
+    textarea?: boolean;
     rules?:
         | Omit<
               RegisterOptions<TFieldValues, TName>,
@@ -32,6 +33,7 @@ const Input = <
     name,
     placeholder,
     control,
+    textarea = false,
     rules,
     ...props
 }: InputProps<TFieldValues, TName>) => {
@@ -50,13 +52,24 @@ const Input = <
                         {label}
                     </Label.Root>
                     <div className="relative">
-                        <input
-                            data-invalid={!!errors[name]}
-                            className="w-full border border-mediumgrey/25 rounded-sm h-10 px-4 body-lg text-black dark:text-white focus:outline-none data-[invalid=true]:border-destructive"
-                            placeholder={placeholder}
-                            autoComplete="off"
-                            {...field}
-                        />
+                        {textarea ? (
+                            <textarea
+                                data-invalid={!!errors[name]}
+                                className="w-full border border-mediumgrey/25 rounded-sm px-4 py-2 body-lg text-black dark:text-white focus:outline-none data-[invalid=true]:border-destructive"
+                                placeholder={placeholder}
+                                autoComplete="off"
+                                rows={4}
+                                {...field}
+                            />
+                        ) : (
+                            <input
+                                data-invalid={!!errors[name]}
+                                className="w-full border border-mediumgrey/25 rounded-sm h-10 px-4 body-lg text-black dark:text-white focus:outline-none data-[invalid=true]:border-destructive"
+                                placeholder={placeholder}
+                                autoComplete="off"
+                                {...field}
+                            />
+                        )}
                         {errors[name] && (
                             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-destructive body-lg">
                                 {errors[name]?.message?.toString()}

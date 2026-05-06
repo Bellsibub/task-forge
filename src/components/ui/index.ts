@@ -12,3 +12,6 @@ export type { SelectProps } from './Select';
 
 export { MultiCreate } from './MultiCreate';
 export type { MultiCreateProps } from './MultiCreate';
+
+export { QuickSelect } from './QuickSelect';
+export type { QuickSelectProps } from './QuickSelect';

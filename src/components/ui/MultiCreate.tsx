@@ -36,7 +36,7 @@ const MultiCreate = <
     colorKey,
     addLabel,
 }: MultiCreateProps<TFieldValues, TName>) => {
-    const { fields, append } = useFieldArray({ control, name });
+    const { fields, append, remove } = useFieldArray({ control, name });
 
     const handleNewColumn = () => {
         append({
@@ -84,7 +84,7 @@ const MultiCreate = <
                             />
                         )}
                     />
-                    <Button size="sm" variant="ghost" className="pr-0" type="button" onClick={() => fields.splice(index, 1)}>
+                    <Button size="sm" variant="ghost" className="pr-0" type="button" onClick={() => remove(index)}>
                         <IconCross />
                     </Button>
                 </div>

@@ -1,6 +1,8 @@
 import { CreateBoard } from '@/components/dialogs/CreateBoard';
+import { CreateTask } from '@/components/dialogs/CreateTask';
 import { DeleteBoard } from '@/components/dialogs/DeleteBoard';
 import { EditBoard } from '@/components/dialogs/EditBoard';
+import { ViewTask } from '@/components/dialogs/ViewTask';
 import { Board } from '@/components/layout/Board';
 import { NoBoards } from '@/components/layout/Empties';
 import { Navbar } from '@/components/layout/Navbar';
@@ -20,6 +22,8 @@ function App() {
             <CreateBoard />
             <EditBoard />
             <DeleteBoard />
+            <CreateTask />
+            <ViewTask />
         </div>
     );
 }

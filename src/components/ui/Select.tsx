@@ -66,7 +66,7 @@ const Select = <
                                 position="popper"
                                 align="center"
                                 sideOffset={4}
-                                className="w-(--radix-select-trigger-width)"
+                                className="w-(--radix-select-trigger-width) z-30"
                             >
                                 <RadixSelect.Viewport className="bg-white dark:bg-bg-dark rounded-sm p-2">
                                     {options.map((item) => (
