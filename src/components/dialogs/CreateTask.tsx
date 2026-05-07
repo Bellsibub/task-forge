@@ -10,16 +10,10 @@ export const CreateTask = () => {
     const { createTask, activeBoardId, getActiveBoard } = appStore(
         (state) => state,
     );
-    const { openCreateTask, setOpenCreateTask, createTaskViaColumnId } = uiStore((state) => state);
+    const { openCreateTask, setOpenCreateTask, createTaskViaColumnId } =
+        uiStore((state) => state);
 
     const { control, handleSubmit, reset } = useForm<Task>({
-        defaultValues: {
-            id: crypto.randomUUID(),
-            title: '',
-            description: '',
-            columnId: createTaskViaColumnId || getActiveBoard()?.columns?.[0].id,
-            subtasks: [],
-        },
         mode: 'onSubmit',
     });
 
@@ -29,7 +23,8 @@ export const CreateTask = () => {
                 id: crypto.randomUUID(),
                 title: '',
                 description: '',
-                columnId: createTaskViaColumnId || getActiveBoard()?.columns?.[0].id,
+                columnId:
+                    createTaskViaColumnId || getActiveBoard()?.columns?.[0].id,
                 subtasks: [],
             });
         }

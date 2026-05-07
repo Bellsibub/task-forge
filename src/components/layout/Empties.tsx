@@ -1,8 +1,12 @@
 import { Button } from '@/components/ui';
+import testData from '@/data.json';
+import { appStore } from '@/lib/store/app';
 import { uiStore } from '@/lib/store/ui';
+import type { Board } from '@/lib/types';
 
 export const NoBoards = () => {
     const setOpenCreateBoard = uiStore((state) => state.setOpenCreateBoard);
+    const seedData = appStore((state) => state.seedData);
 
     return (
         <>
@@ -16,6 +20,13 @@ export const NoBoards = () => {
                         onClick={() => setOpenCreateBoard(true)}
                     >
                         + Add New Board
+                    </Button>
+                    <span>or</span>
+                    <Button
+                        variant="secondary"
+                        onClick={() => seedData(testData.boards as Board[])}
+                    >
+                        Seed with test data
                     </Button>
                 </div>
             </main>

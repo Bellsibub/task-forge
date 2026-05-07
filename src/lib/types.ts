@@ -15,7 +15,7 @@ export interface Task {
 export interface Column {
     id: string;
     name: string;
-    color: 'primary' | 'accent' | 'destructive' | 'mediumgrey';
+    color: 'primary' | 'accent' | 'success' | 'destructive' | 'mediumgrey';
     tasks?: Task[] | null;
 }
 

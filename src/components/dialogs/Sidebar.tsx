@@ -8,9 +8,8 @@ import { cn } from '@/lib/utils';
 import { Dialog } from 'radix-ui';
 
 export const Sidebar = () => {
-    const { boards, getActiveBoard, activeBoardId, setActiveBoard } = appStore(
-        (state) => state,
-    );
+    const { boards, getActiveBoard, activeBoardId, setActiveBoard, reset } =
+        appStore((state) => state);
     const { sidebarOpen, setSidebarOpen, setOpenCreateBoard } = uiStore(
         (state) => state,
     );
@@ -71,6 +70,16 @@ export const Sidebar = () => {
                             >
                                 <IconBoard className="shrink-0" />+ Create New
                                 Board
+                            </Button>
+                            <Button
+                                onClick={() => {
+                                    reset();
+                                    setSidebarOpen(false);
+                                }}
+                                variant="ghost"
+                                className="w-full justify-start rounded-l-none pl-6 text-destructive gap-3 hover:bg-destructive/25"
+                            >
+                                Reset App
                             </Button>
                         </div>
                     </Dialog.Content>
