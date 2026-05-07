@@ -1,3 +1,4 @@
+import { TaskOptions } from '@/components/dropdowns/TaskOptions';
 import { Checkbox, QuickSelect } from '@/components/ui';
 import { appStore } from '@/lib/store/app';
 import { uiStore } from '@/lib/store/ui';
@@ -28,14 +29,18 @@ export const ViewTask = () => {
             <Dialog.Portal>
                 <Dialog.Overlay className="bg-black/50 fixed inset-0 animate-fade-in top-16 z-20" />
                 <Dialog.Content className="bg-white rounded-lg fixed p-6 w-[calc(100%-2rem)] max-w-120 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 animate-content-show z-20 flex flex-col gap-6">
-                    <Dialog.Title className="heading-lg">
+                    <Dialog.Title className="heading-lg flex items-center justify-between">
                         {activeTask?.title}
+                        <TaskOptions />
                     </Dialog.Title>
                     <Dialog.Description className="text-mediumgrey">
                         {activeTask?.description}
                     </Dialog.Description>
                     <Label.Root className="text-xs text-mediumgrey font-bold -mb-2">
-                        Subtasks ({activeTask?.subtasks?.filter((s) => s.isCompleted).length || 0} of {activeTask?.subtasks?.length || 0})
+                        Subtasks (
+                        {activeTask?.subtasks?.filter((s) => s.isCompleted)
+                            .length || 0}{' '}
+                        of {activeTask?.subtasks?.length || 0})
                     </Label.Root>
                     <div className="flex flex-col gap-2">
                         {activeTask?.subtasks?.map((subtask) => (

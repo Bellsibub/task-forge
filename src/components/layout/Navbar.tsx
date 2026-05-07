@@ -1,7 +1,7 @@
 import IconAdd from '@/assets/icon-add-task-mobile.svg?react';
 import Logo from '@/assets/logo-mobile.svg?react';
 import { Sidebar } from '@/components/dialogs/Sidebar';
-import { BoardOptions } from '@/components/features/BoardOptions';
+import { BoardOptions } from '@/components/dropdowns/BoardOptions';
 import { Button } from '@/components/ui';
 import { appStore } from '@/lib/store/app';
 import { uiStore } from '@/lib/store/ui';
