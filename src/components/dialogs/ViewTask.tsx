@@ -27,13 +27,13 @@ export const ViewTask = () => {
     return (
         <Dialog.Root open={openViewTask} onOpenChange={setOpenViewTask}>
             <Dialog.Portal>
-                <Dialog.Overlay className="bg-black/50 fixed inset-0 animate-fade-in top-16 z-20" />
+                <Dialog.Overlay className="bg-black/50 fixed inset-0 animate-fade-in z-20" />
                 <Dialog.Content className="bg-white rounded-lg fixed p-6 w-[calc(100%-2rem)] max-w-120 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 animate-content-show z-20 flex flex-col gap-6">
                     <Dialog.Title className="heading-lg flex items-center justify-between">
                         {activeTask?.title}
                         <TaskOptions />
                     </Dialog.Title>
-                    <Dialog.Description className="text-mediumgrey">
+                    <Dialog.Description className="text-mediumgrey body-lg">
                         {activeTask?.description}
                     </Dialog.Description>
                     <Label.Root className="text-xs text-mediumgrey font-bold -mb-2">
@@ -54,6 +54,11 @@ export const ViewTask = () => {
                                 }
                             />
                         ))}
+                        {!activeTask?.subtasks?.length && (
+                            <p className="text-sm text-mediumgrey italic">
+                                Edit the task to add subtasks.
+                            </p>
+                        )}
                     </div>
                     <QuickSelect
                         label="Current Status"
