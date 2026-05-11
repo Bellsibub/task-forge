@@ -4,13 +4,15 @@ import { immer } from 'zustand/middleware/immer';
 export interface UIState {
     sidebarOpen: boolean;
     setSidebarOpen: (open: boolean) => void;
-    
+    mobileSidebarOpen: boolean;
+    setMobileSidebarOpen: (open: boolean) => void;
+
     openEditBoard: boolean;
     setOpenEditBoard: (open: boolean) => void;
-    
+
     openCreateBoard: boolean;
     setOpenCreateBoard: (open: boolean) => void;
-    
+
     openDeleteBoard: boolean;
     setOpenDeleteBoard: (open: boolean) => void;
 
@@ -35,6 +37,11 @@ export const uiStore = create<UIState>()(
             set((state) => {
                 state.sidebarOpen = open;
             }),
+        mobileSidebarOpen: false,
+        setMobileSidebarOpen: (open) =>
+            set((state) => {
+                state.mobileSidebarOpen = open;
+            }),
         openEditBoard: false,
         setOpenEditBoard: (open) =>
             set((state) => {
@@ -55,12 +62,6 @@ export const uiStore = create<UIState>()(
         setOpenCreateTask: (open, viaId) =>
             set((state) => {
                 state.openCreateTask = open;
-                console.log(
-                    'Setting openCreateTask to',
-                    open,
-                    'with viaId',
-                    viaId,
-                );
                 state.createTaskViaColumnId = viaId || undefined;
             }),
         openViewTask: false,

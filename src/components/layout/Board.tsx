@@ -9,16 +9,14 @@ type BoardProps = { data: BoardType } & React.HTMLAttributes<HTMLDivElement>;
 export const Board = ({ data, ...props }: BoardProps) => {
     const { setOpenEditBoard } = uiStore((state) => state);
     if (data.columns?.length === 0) {
-        return <NoColumns />;
+        return (
+            <NoColumns className="flex-1 overflow-auto flex flex-col items-center justify-center" />
+        );
     }
     return (
-        <main
-            className="mt-6 ml-4 overflow-auto h-[calc(100vh-138px)]"
-            {...props}
-        >
+        <main {...props}>
             <div
                 className="grid grid-flow-col auto-cols-[280px] gap-6 h-full"
-                {...props}
             >
                 {data.columns?.map((column) => (
                     <Column key={column.id} data={column} />
