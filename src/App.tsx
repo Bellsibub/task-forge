@@ -1,9 +1,7 @@
-import { CreateBoard } from '@/components/dialogs/CreateBoard';
-import { CreateTask } from '@/components/dialogs/CreateTask';
+import { BoardDialog } from '@/components/dialogs/BoardDialog';
 import { DeleteBoard } from '@/components/dialogs/DeleteBoard';
 import { DeleteTask } from '@/components/dialogs/DeleteTask';
-import { EditBoard } from '@/components/dialogs/EditBoard';
-import { EditTask } from '@/components/dialogs/EditTask';
+import { TaskDialog } from '@/components/dialogs/TaskDialog';
 import { ViewTask } from '@/components/dialogs/ViewTask';
 import { Board } from '@/components/layout/Board';
 import { NoBoards } from '@/components/layout/Empties';
@@ -21,12 +19,12 @@ function App() {
             ) : (
                 <NoBoards />
             )}
-            <CreateBoard />
-            <EditBoard />
+            <BoardDialog mode="create" />
+            <BoardDialog mode="edit" />
             <DeleteBoard />
-            <CreateTask />
+            <TaskDialog mode="create" />
+            <TaskDialog mode="edit" />
             <ViewTask />
-            <EditTask />
             <DeleteTask />
         </div>
     );

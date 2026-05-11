@@ -15,3 +15,9 @@ export type { MultiCreateProps } from './MultiCreate';
 
 export { QuickSelect } from './QuickSelect';
 export type { QuickSelectProps } from './QuickSelect';
+
+export { ConfirmationDialog } from './ConfirmationDialog';
+export type { ConfirmationDialogProps } from './ConfirmationDialog';
+
+export { DialogShell } from './DialogShell';
+export type { DialogShellProps } from './DialogShell';
