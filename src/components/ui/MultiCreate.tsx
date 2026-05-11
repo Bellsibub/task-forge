@@ -55,7 +55,7 @@ const MultiCreate = <
                 {label}
             </Label.Root>
             {fields.map((field, index) => (
-                <div key={field.id} className="relative inline-flex">
+                <div key={field.id} className="relative inline-flex gap-1">
                     {colorKey && (
                         <Controller
                             name={
@@ -84,7 +84,12 @@ const MultiCreate = <
                             />
                         )}
                     />
-                    <Button size="sm" variant="ghost" className="pr-0" type="button" onClick={() => remove(index)}>
+                    <Button
+                        size="sm"
+                        variant="ghost"
+                        type="button"
+                        onClick={() => remove(index)}
+                    >
                         <IconCross />
                     </Button>
                 </div>

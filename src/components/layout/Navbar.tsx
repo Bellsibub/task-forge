@@ -21,7 +21,7 @@ export const Navbar = ({ ...props }: NavbarProps) => {
                 <Logo className="shrink-0" />
                 <Sidebar />
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 pr-4">
                 <Button
                     className="w-12 h-8 p-0"
                     disabled={!getActiveBoard()?.columns?.length}
