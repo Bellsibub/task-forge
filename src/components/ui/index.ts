@@ -21,3 +21,6 @@ export type { ConfirmationDialogProps } from './ConfirmationDialog';
 
 export { DialogShell } from './DialogShell';
 export type { DialogShellProps } from './DialogShell';
+
+export { Switch } from './Switch';
+export type { SwitchProps } from './Switch';

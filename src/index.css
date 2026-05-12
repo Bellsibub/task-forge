@@ -59,7 +59,7 @@
         @apply text-2xl leading-7.5 font-bold text-black dark:text-white;
     }
     .heading-lg {
-        @apply text-lg leading-5.75 font-bold text-black dark:text-white;
+        @apply text-lg leading-5.75 font-bold text-black dark:text-white md:text-[20px];
     }
     .heading-md {
         @apply text-[15px] leading-4.75 font-bold text-black dark:text-white;

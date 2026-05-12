@@ -12,7 +12,7 @@ export const Task = ({ data, ...props }: TaskProps) => {
     return (
         <div
             {...props}
-            className="rounded-lg bg-white py-5.75 px-4 drop-shadow-lg drop-shadow-shadow flex flex-col gap-2 hover:cursor-pointer hover:bg-mediumgrey/10 transition-colors duration-500 ease-in-out"
+            className="rounded-lg bg-white dark:bg-darkgrey py-5.75 px-4 drop-shadow-lg drop-shadow-shadow flex flex-col gap-2 hover:cursor-pointer hover:bg-mediumgrey/10 transition-colors duration-500 ease-in-out"
             onClick={() => {
                 setOpenViewTask(true);
                 setActiveTask(data);

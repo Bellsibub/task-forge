@@ -1,5 +1,6 @@
 import IconSidebar from '@/assets/icon-show-sidebar.svg?react';
 import FullLogoDark from '@/assets/logo-dark.svg?react';
+import FullLogoLight from '@/assets/logo-light.svg?react';
 import { BoardDialog } from '@/components/dialogs/BoardDialog';
 import { DeleteBoard } from '@/components/dialogs/DeleteBoard';
 import { DeleteTask } from '@/components/dialogs/DeleteTask';
@@ -22,32 +23,35 @@ function App() {
     return (
         <>
             <div className="flex flex-col h-screen overflow-hidden">
-                <div className="bg-white h-16 flex items-center border-b border-lines-light">
+                <div className="bg-white dark:bg-darkgrey h-16 md:h-20 lg:h-24 flex items-center">
                     <div
                         className={cn(
                             'hidden md:flex',
-                            'w-50 h-full items-center transition-[width] duration-300 ease-in-out pl-6',
-                            'border-r border-lines-light',
-                            sidebarOpen && 'w-65',
+                            'w-50 lg:w-52.25 h-full items-center transition-[width] duration-300 ease-in-out pl-6',
+                            'border-r border-lines-light dark:border-lines-dark',
+                            !sidebarOpen &&
+                                'border-b border-lines-light dark:border-lines-dark',
+                            sidebarOpen && 'w-65 lg:w-75',
                         )}
                     >
-                        <FullLogoDark />
+                        <FullLogoDark className="block dark:hidden" />
+                        <FullLogoLight className="hidden dark:block" />
                     </div>
-                    <Navbar className="bg-white flex-1 flex items-center justify-between" />
+                    <Navbar className="bg-white dark:bg-darkgrey flex-1 flex items-center justify-between border-b border-lines-light dark:border-lines-dark h-full" />
                 </div>
                 <div className="flex-1 flex">
                     <Sidebar
                         className={cn(
                             'hidden md:block',
-                            'bg-white overflow-hidden',
-                            'border-r border-lines-light',
+                            'bg-white overflow-hidden dark:bg-darkgrey',
+                            'border-r border-lines-light dark:border-lines-dark',
                             'transition-[width] duration-300 ease-in-out',
-                            sidebarOpen ? 'w-50 md:w-65' : 'w-0',
+                            sidebarOpen ? 'w-50 md:w-65 lg:w-75' : 'w-0',
                         )}
                     />
                     {boards.length ? (
                         <Board
-                            className="flex-1 overflow-auto m-6"
+                            className="flex-1 overflow-auto m-6 "
                             data={getActiveBoard() as BoardType}
                         />
                     ) : (

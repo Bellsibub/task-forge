@@ -6,6 +6,7 @@ type Theme = 'light' | 'dark';
 type ThemeState = {
     theme: 'light' | 'dark';
     toggleTheme: () => void;
+    setTheme: (bool: boolean) => void;
 };
 
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -25,6 +26,10 @@ const themeStore = createStore<ThemeState>()(
             toggleTheme: () =>
                 set((state) => ({
                     theme: state.theme === 'light' ? 'dark' : 'light',
+                })),
+            setTheme: (isDark) =>
+                set(() => ({
+                    theme: isDark ? 'dark' : 'light',
                 })),
         }),
         {

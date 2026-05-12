@@ -27,7 +27,7 @@ export const BoardOptions = ({ ...props }: BoardOptionsProps) => {
                 <DropdownMenu.Portal>
                     <DropdownMenu.Content
                         align="end"
-                        className="bg-white rounded-lg p-4 shadow-lg gap-4 flex flex-col w-48"
+                        className="bg-white dark:bg-bg-dark rounded-lg p-4 shadow-lg gap-4 flex flex-col w-48"
                     >
                         <DropdownMenu.Item
                             className="body-lg focus:outline-none hover:cursor-pointer hover:text-primary text-mediumgrey"

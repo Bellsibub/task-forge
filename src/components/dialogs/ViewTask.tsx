@@ -32,7 +32,7 @@ export const ViewTask = () => {
             description={activeTask?.description || undefined}
             titleChildren={<TaskOptions />}
         >
-            <Label.Root className="text-xs text-mediumgrey font-bold -mb-2">
+            <Label.Root className="text-xs text-mediumgrey dark:text-white font-bold -mb-2">
                 Subtasks (
                 {activeTask?.subtasks?.filter((s) => s.isCompleted).length || 0}{' '}
                 of {activeTask?.subtasks?.length || 0})

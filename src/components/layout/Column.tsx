@@ -13,6 +13,7 @@ export const ColumnVariants = cva('block', {
             accent: 'bg-accent',
             destructive: 'bg-destructive',
             mediumgrey: 'bg-mediumgrey',
+            success: 'bg-success',
         },
     },
     defaultVariants: {
@@ -24,7 +25,7 @@ const ColumnHeader = ({
     title,
     count,
     variant,
-}: VariantProps<typeof ColumnVariants> & { title: string, count: number }) => {
+}: VariantProps<typeof ColumnVariants> & { title: string; count: number }) => {
     return (
         <div className="flex items-center gap-3">
             <div
@@ -33,7 +34,7 @@ const ColumnHeader = ({
                     ColumnVariants({ variant }),
                 )}
             />
-            <h4 className="heading-sm uppercase">
+            <h4 className="heading-sm uppercase text-mediumgrey">
                 {title} ({count})
             </h4>
         </div>
@@ -48,7 +49,11 @@ export const Column = ({ data, ...props }: ColumnProps) => {
     const { setOpenCreateTask } = uiStore((state) => state);
     return (
         <div {...props}>
-            <ColumnHeader variant={data.color} title={data.name} count={data.tasks?.length || 0} />
+            <ColumnHeader
+                variant={data.color}
+                title={data.name}
+                count={data.tasks?.length || 0}
+            />
             <div className="mt-4 flex flex-col gap-4">
                 {data.tasks?.map((task) => (
                     <Task key={task.id} data={task} />
@@ -56,7 +61,7 @@ export const Column = ({ data, ...props }: ColumnProps) => {
                 <Button
                     variant="ghost"
                     onClick={() => setOpenCreateTask(true, data.id)}
-                    className="rounded-lg text-mediumgrey bg-linear-to-r from-[#E9EFFA] to-[#E9EFFA]/50 hover:drop-shadow-lg hover:drop-shadow-shadow"
+                    className="rounded-lg text-mediumgrey bg-linear-to-r from-[#E9EFFA] to-[#E9EFFA]/50 dark:from-[#2B2C37] dark:to-[#2B2C37]/50 hover:drop-shadow-lg hover:drop-shadow-shadow"
                 >
                     + Add New Task
                 </Button>

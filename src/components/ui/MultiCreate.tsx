@@ -49,7 +49,7 @@ const MultiCreate = <
     return (
         <div className="flex flex-col gap-4">
             <Label.Root
-                className="text-xs text-mediumgrey font-bold"
+                className="text-xs text-mediumgrey font-bold dark:text-white"
                 htmlFor={name}
             >
                 {label}

@@ -21,7 +21,7 @@ export const Navbar = ({ ...props }: NavbarProps) => {
                 <h1
                     className={cn(
                         'hidden md:block',
-                        'heading-lg truncate px-4',
+                        'heading-lg truncate px-4 lg:text-2xl',
                         !getActiveBoard() && 'text-mediumgrey',
                     )}
                 >
@@ -31,11 +31,12 @@ export const Navbar = ({ ...props }: NavbarProps) => {
             </div>
             <div className="flex items-center gap-2 pr-4">
                 <Button
-                    className="w-12 h-8 p-0"
+                    className="w-12 h-8 p-0 md:w-auto md:h-12 md:px-6"
                     disabled={!getActiveBoard()?.columns?.length}
                     onClick={() => setOpenCreateTask(true)}
                 >
-                    <IconAdd />
+                    <span className="hidden md:block">+ Add New Task</span>
+                    <IconAdd className="block md:hidden" />
                 </Button>
                 <BoardOptions />
             </div>

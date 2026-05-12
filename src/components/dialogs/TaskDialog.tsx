@@ -72,7 +72,7 @@ export const TaskDialog = ({ mode }: TaskDialogProps) => {
         <DialogShell
             open={open}
             onOpenChange={handleOpenChange}
-            title={mode === 'create' ? 'Create Task' : 'Edit Task'}
+            title={mode === 'create' ? 'Add New Task' : 'Edit Task'}
         >
             <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                 <Input
@@ -109,7 +109,7 @@ export const TaskDialog = ({ mode }: TaskDialogProps) => {
                     }
                 />
                 <Button type="submit" className="w-full">
-                    {mode === 'create' ? 'Create Task' : 'Edit Task'}
+                    {mode === 'create' ? 'Create Task' : 'Save Changes'}
                 </Button>
             </form>
         </DialogShell>

@@ -38,7 +38,7 @@ const Select = <
             render={({ field }) => (
                 <div className="flex flex-col gap-2">
                     <Label.Root
-                        className="text-xs text-mediumgrey font-bold"
+                        className="text-xs text-mediumgrey font-bold dark:text-white"
                         htmlFor={name}
                     >
                         {label}

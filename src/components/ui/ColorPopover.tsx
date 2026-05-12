@@ -53,6 +53,13 @@ export const ColorPopover = ({ value, onChange }: ColorPopoverProps) => {
                             >
                                 <RadioGroup.Indicator className="flex items-center justify-center size-full relative after:bg-white after:w-2.5 after:h-2.5 after:rounded-full" />
                             </RadioGroup.Item>
+                            <RadioGroup.Item
+                                className="bg-success size-6 rounded border border-mediumgrey/25 hover:opacity-50 transition-opacity duration-500 ease-in-out hover:cursor-pointer"
+                                value="success"
+                                id="success"
+                            >
+                                <RadioGroup.Indicator className="flex items-center justify-center size-full relative after:bg-white after:w-2.5 after:h-2.5 after:rounded-full" />
+                            </RadioGroup.Item>
                         </RadioGroup.Root>
                     </div>
                 </Popover.Content>

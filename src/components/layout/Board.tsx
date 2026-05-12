@@ -24,7 +24,7 @@ export const Board = ({ data, ...props }: BoardProps) => {
                 <Button
                     variant="ghost"
                     size="xl"
-                    className="h-full rounded-lg text-mediumgrey bg-linear-to-r from-[#E9EFFA] to-[#E9EFFA]/50"
+                    className="h-full rounded-lg text-mediumgrey bg-linear-to-r from-[#E9EFFA] to-[#E9EFFA]/50 dark:from-[#2B2C37] dark:to-[#2B2C37]/50"
                     onClick={() => setOpenEditBoard(true)}
                 >
                     + New Column
